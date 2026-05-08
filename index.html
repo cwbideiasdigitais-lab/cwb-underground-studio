@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CWB Underground Studio - Bibliotecas Musicais 2026</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        orbitron: ['Orbitron', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+      },
+      colors: {
+        ug: {
+          dark: '#0a0a0f',
+          darker: '#050508',
+          card: '#12121a',
+          neon: '#00f0ff',
+          pink: '#ff00ff',
+          purple: '#b026ff',
+          green: '#00ff88',
+          orange: '#ff6b00',
+          text: '#e0e0e0',
+          muted: '#6b7280',
+        }
+      }
+    }
+  }
+}
+</script>
+<style>
+body{font-family:'Inter',sans-serif;background:#0a0a0f;color:#e0e0e0;overflow-x:hidden;}
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+.neon-text{text-shadow:0 0 10px rgba(0,240,255,0.5),0 0 20px rgba(0,240,255,0.3);}
+.reveal{opacity:0;transform:translateY(50px);transition:all 0.8s ease;}
+.reveal.active{opacity:1;transform:translateY(0);}
+.card-hover{transition:all 0.4s ease;}
+.card-hover:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,240,255,0.15);}
+.pulse{animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(0,240,255,0.4);}50%{box-shadow:0 0 40px rgba(0,240,255,0.7);}}
+.countdown{background:linear-gradient(135deg,#12121a,#1a1a2e);border:1px solid rgba(0,240,255,0.3);}
+::-webkit-scrollbar{width:8px;}::-webkit-scrollbar-thumb{background:#00f0ff;border-radius:4px;}
+@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+</style>
+</head>
+<body>
+<svg style="display:none"><symbol id="w" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol><symbol id="m" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></symbol><symbol id="f" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></symbol><symbol id="p" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></symbol><symbol id="c" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></symbol></svg>
+<canvas id="particles"></canvas>
+<nav class="fixed top-0 left-0 right-0 z-50 bg-[#050508]/80 backdrop-blur-xl border-b border-[#00f0ff]/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-[#00f0ff] to-[#ff00ff] rounded-lg flex items-center justify-center" style="box-shadow:0 0 15px rgba(0,240,255,0.3)">
+          <span class="font-orbitron font-bold text-white text-sm">CWB</span>
+        </div>
+        <div>
+          <span class="font-orbitron font-bold text-lg text-white block leading-tight tracking-wider">UNDERGROUND</span>
+          <span class="font-orbitron text-[10px] text-[#00f0ff] tracking-[0.3em]">STUDIO</span>
+        </div>
+      </a>
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="#catalogo" class="text-sm text-[#6b7280] hover:text-[#00f0ff] transition-colors font-medium tracking-wide">CATÁLOGO</a>
+        <a href="#packs" class="text-sm text-[#6b7280] hover:text-[#00f0ff] transition-colors font-medium tracking-wide">PACKS</a>
+        <a href="#promo" class="text-sm text-[#6b7280] hover:text-[#00f0ff] transition-colors font-medium tracking-wide">PROMOÇÃO</a>
+      </div>
+      <a href="https://wa.me/5541996399666" target="_blank" class="hidden lg:flex items-center gap-1.5 border border-[#00f0ff]/50 text-[#00f0ff] font-medium px-4 py-2 rounded-full text-xs hover:bg-[#00f0ff]/10 transition-all">
+        <svg class="w-3.5 h-3.5"><use href="#w"/></svg>WHATSAPP
+      </a>
+    </div>
+  </div>
+</nav>
+
+<section class="relative min-h-screen flex items-center justify-center pt-20" style="background-image:radial-gradient(circle at 1px 1px,rgba(0,240,255,0.03) 1px,transparent 0);background-size:50px 50px;">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+    <div class="inline-flex items-center gap-2 bg-[#00f0ff]/10 border border-[#00f0ff]/30 rounded-full px-4 py-2 mb-6">
+      <span class="w-2 h-2 bg-[#00ff88] rounded-full animate-pulse"></span>
+      <span class="text-sm text-[#00f0ff] font-orbitron tracking-wider">NOVOS PACKS TODO MÊS</span>
+    </div>
+    <h1 class="font-orbitron text-4xl sm:text-5xl lg:text-7xl font-black tracking-tight mb-4 leading-tight">
+      <span class="neon-text">UNDERGROUND</span><br><span class="text-white">STUDIO</span>
+    </h1>
+    <p class="text-base sm:text-lg text-[#6b7280] max-w-3xl mx-auto mb-3 px-4">
+      A <span class="text-[#00f0ff] font-semibold">LOJA ONLINE</span> DE BIBLIOTECAS MUSICAIS MAIS ATUALIZADA DO BRASIL
+    </p>
+    <p class="text-sm text-[#6b7280] max-w-2xl mx-auto mb-8 px-4">Bibliotecas exclusivas e assessoria profissional para DJs e produtores.</p>
+
+    <div class="bg-gradient-to-r from-[#00f0ff]/20 to-[#ff00ff]/20 border border-[#00f0ff]/30 rounded-2xl p-6 mb-10 max-w-3xl mx-auto">
+      <p class="text-[#00f0ff] font-orbitron text-sm tracking-wider mb-4">⚡ OFERTA RELÂMPAGO — ACABA EM:</p>
+      <div class="flex justify-center gap-4">
+        <div class="countdown rounded-xl p-4 min-w-[80px]"><div class="font-orbitron text-3xl font-bold text-[#00f0ff]" id="hours">23</div><div class="text-xs text-[#6b7280] mt-1">HORAS</div></div>
+        <div class="countdown rounded-xl p-4 min-w-[80px]"><div class="font-orbitron text-3xl font-bold text-[#ff00ff]" id="minutes">59</div><div class="text-xs text-[#6b7280] mt-1">MIN</div></div>
+        <div class="countdown rounded-xl p-4 min-w-[80px]"><div class="font-orbitron text-3xl font-bold text-[#00ff88]" id="seconds">59</div><div class="text-xs text-[#6b7280] mt-1">SEG</div></div>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-3 justify-center mb-12">
+      <a href="#catalogo" class="bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-[#050508] font-orbitron font-bold px-8 py-3.5 rounded-full text-sm pulse hover:scale-105 transition-transform inline-flex items-center justify-center gap-2">
+        VER CATÁLOGO
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+      </a>
+      <a href="https://wa.me/5541996399666" target="_blank" class="border border-[#00f0ff]/40 text-[#00f0ff] font-orbitron font-semibold px-8 py-3.5 rounded-full text-sm hover:bg-[#00f0ff]/10 transition-all inline-flex items-center justify-center gap-2">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WHATSAPP
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+      <div class="text-center"><div class="font-orbitron text-3xl font-bold text-[#00f0ff]">16+</div><div class="text-xs text-[#6b7280] mt-1">BIBLIOTECAS</div></div>
+      <div class="text-center"><div class="font-orbitron text-3xl font-bold text-[#ff00ff]">4000+</div><div class="text-xs text-[#6b7280] mt-1">TRACKS</div></div>
+      <div class="text-center"><div class="font-orbitron text-3xl font-bold text-[#00ff88]">320</div><div class="text-xs text-[#6b7280] mt-1">KBPS</div></div>
+      <div class="text-center"><div class="font-orbitron text-3xl font-bold text-[#ff6b00]">500+</div><div class="text-xs text-[#6b7280] mt-1">CLIENTES</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="bg-gradient-to-r from-[#00f0ff]/10 to-[#ff00ff]/10 border-y border-[#00f0ff]/10 py-4">
+  <div style="overflow:hidden;white-space:nowrap">
+    <div style="display:inline-block;animation:marquee 20s linear infinite" class="font-orbitron text-sm text-[#00f0ff] tracking-widest">
+      TECH HOUSE • DEEP HOUSE • TECHNO • FLASHBACK • FUNKY HOUSE • PSYTRANCE • PROGRESSIVE • AFRO HOUSE • MELODIC TECHNO • PEAK TIME •
+      TECH HOUSE • DEEP HOUSE • TECHNO • FLASHBACK • FUNKY HOUSE • PSYTRANCE • PROGRESSIVE • AFRO HOUSE • MELODIC TECHNO • PEAK TIME •
+    </div>
+  </div>
+</div>
+<section id="catalogo" class="py-20 lg:py-32">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <p class="text-[#00f0ff] font-orbitron text-sm tracking-widest mb-3">NOSSO CATÁLOGO</p>
+      <h2 class="font-orbitron text-4xl lg:text-5xl font-bold text-white mb-4">Bibliotecas <span class="text-[#00f0ff]">Musicais</span></h2>
+      <p class="text-[#6b7280] text-lg max-w-2xl mx-auto">As melhores tracks atualizadas mensalmente, qualidade premium para DJs profissionais.</p>
+      <div class="w-24 h-1 bg-gradient-to-r from-[#00f0ff] to-[#ff00ff] mx-auto mt-8 rounded-full"></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="productsGrid">
+
+      <!-- Progressive House -->
+      <div class="card-hover bg-[#12121a] rounded-2xl overflow-hidden border border-[#00f0ff]/10 reveal" data-category="house">
+        <div class="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#00f0ff]/20 to-[#b026ff]/20 flex items-center justify-center">
+          <div class="text-center p-6">
+            <svg class="w-16 h-16 text-[#00f0ff] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+            <h3 class="font-orbitron text-xl font-bold text-white">Progressive House</h3>
+            <p class="text-[#00f0ff] text-sm mt-2">Fev/Març/Abril 2026</p>
+          </div>
+          <div class="absolute top-4 left-4"><span class="bg-[#00f0ff] text-[#050508] text-xs font-bold px-3 py-1 rounded-full">EXCLUSIVO</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4"><div class="flex items-end gap-2"><span class="font-orbitron text-3xl font-bold text-[#00f0ff]">R$49</span><span class="text-[#6b7280] line-through text-sm mb-1">R$79</span></div></div>
+        </div>
+        <div class="p-4 lg:p-5">
+          <h3 class="font-orbitron text-lg lg:text-xl font-bold text-white mb-1">Progressive House</h3>
+          <p class="text-[#00f0ff] text-sm mb-4">Fev/Març/Abril 2026</p>
+          <div class="flex items-center justify-between mb-4 text-sm text-[#6b7280]">
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#00f0ff]"><use href="#m"/></svg>+1000 tracks</span>
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#ff00ff]"><use href="#f"/></svg>320kbps</span>
+          </div>
+          <div class="space-y-2">
+            <a href="https://yzq4ck5conrca.kimi.page/" target="_blank" class="block w-full bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-[#050508] font-orbitron font-semibold py-2.5 rounded-lg text-center hover:scale-105 transition-transform flex items-center justify-center gap-1.5 text-sm"><svg class="w-4 h-4"><use href="#p"/></svg>PRÉVIAS</a>
+            <a href="https://www.mercadolivre.com.br/pack-de-musica-progressive-house-fevmarcabril-2026/up/MLBU3949516976?pdp_filters=item_id:MLB4656251035" target="_blank" class="block w-full border border-[#ffe600]/60 text-[#ffe600] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#ffe600]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#c"/></svg>MERCADO LIVRE • 12X</a>
+            <a href="https://wa.me/5541996399666?text=Quero comprar o pack Progressive House Fev/Març/Abril 2026" target="_blank" class="block w-full border border-[#00ff88]/50 text-[#00ff88] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#00ff88]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#w"/></svg>WHATSAPP • PIX</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Melodic House Techno -->
+      <div class="card-hover bg-[#12121a] rounded-2xl overflow-hidden border border-[#00f0ff]/10 reveal" data-category="techno">
+        <div class="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#ff00ff]/20 to-[#b026ff]/20 flex items-center justify-center">
+          <div class="text-center p-6">
+            <svg class="w-16 h-16 text-[#ff00ff] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <h3 class="font-orbitron text-xl font-bold text-white">Melodic Techno</h3>
+            <p class="text-[#ff00ff] text-sm mt-2">Jan/Fev/Març 2026</p>
+          </div>
+          <div class="absolute top-4 left-4"><span class="bg-[#ff00ff] text-white text-xs font-bold px-3 py-1 rounded-full">LIMITADA</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4"><div class="flex items-end gap-2"><span class="font-orbitron text-3xl font-bold text-[#00f0ff]">R$49</span><span class="text-[#6b7280] line-through text-sm mb-1">R$79</span></div></div>
+        </div>
+        <div class="p-4 lg:p-5">
+          <h3 class="font-orbitron text-lg lg:text-xl font-bold text-white mb-1">Melodic House Techno</h3>
+          <p class="text-[#00f0ff] text-sm mb-4">Jan/Fev/Març 2026</p>
+          <div class="flex items-center justify-between mb-4 text-sm text-[#6b7280]">
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#00f0ff]"><use href="#m"/></svg>+1000 tracks</span>
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#ff00ff]"><use href="#f"/></svg>320kbps</span>
+          </div>
+          <div class="space-y-2">
+            <a href="https://packmelodichouse2026-trifle-3492f1.netlify.app/" target="_blank" class="block w-full bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-[#050508] font-orbitron font-semibold py-2.5 rounded-lg text-center hover:scale-105 transition-transform flex items-center justify-center gap-1.5 text-sm"><svg class="w-4 h-4"><use href="#p"/></svg>PRÉVIAS</a>
+            <a href="https://www.mercadolivre.com.br/pack-de-musica-melodic-house-techno-janfevmarc-de-2026/up/MLBU3937705629?pdp_filters=item_id:MLB6719917824" target="_blank" class="block w-full border border-[#ffe600]/60 text-[#ffe600] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#ffe600]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#c"/></svg>MERCADO LIVRE • 12X</a>
+            <a href="https://wa.me/5541996399666?text=Quero comprar o pack Melodic House Techno Jan/Fev/Març 2026" target="_blank" class="block w-full border border-[#00ff88]/50 text-[#00ff88] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#00ff88]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#w"/></svg>WHATSAPP • PIX</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech House Mar/Abr -->
+      <div class="card-hover bg-[#12121a] rounded-2xl overflow-hidden border border-[#00f0ff]/10 reveal" data-category="house">
+        <div class="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#00ff88]/20 to-[#00f0ff]/20 flex items-center justify-center">
+          <div class="text-center p-6">
+            <svg class="w-16 h-16 text-[#00ff88] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+            <h3 class="font-orbitron text-xl font-bold text-white">Tech House</h3>
+            <p class="text-[#00ff88] text-sm mt-2">Março/Abril 2026</p>
+          </div>
+          <div class="absolute top-4 left-4"><span class="bg-[#00ff88] text-[#050508] text-xs font-bold px-3 py-1 rounded-full">LANÇAMENTO</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4"><div class="flex items-end gap-2"><span class="font-orbitron text-3xl font-bold text-[#00f0ff]">R$49</span><span class="text-[#6b7280] line-through text-sm mb-1">R$79</span></div></div>
+        </div>
+        <div class="p-4 lg:p-5">
+          <h3 class="font-orbitron text-lg lg:text-xl font-bold text-white mb-1">Tech House Mar/Abr</h3>
+          <p class="text-[#00f0ff] text-sm mb-4">2026</p>
+          <div class="flex items-center justify-between mb-4 text-sm text-[#6b7280]">
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#00f0ff]"><use href="#m"/></svg>+1500 tracks</span>
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#ff00ff]"><use href="#f"/></svg>320kbps</span>
+          </div>
+          <div class="space-y-2">
+            <a href="https://agent-69f39d33c784df739f68c--classy-fudge-9b57c7.netlify.app/" target="_blank" class="block w-full bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-[#050508] font-orbitron font-semibold py-2.5 rounded-lg text-center hover:scale-105 transition-transform flex items-center justify-center gap-1.5 text-sm"><svg class="w-4 h-4"><use href="#p"/></svg>PRÉVIAS</a>
+            <a href="https://www.mercadolivre.com.br/pack-de-musica-tech-house-marcoa-exclusivo-bril-2026/up/MLBU3937709585?pdp_filters=item_id:MLB6719880942" target="_blank" class="block w-full border border-[#ffe600]/60 text-[#ffe600] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#ffe600]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#c"/></svg>MERCADO LIVRE • 12X</a>
+            <a href="https://wa.me/5541996399666?text=Quero comprar a Biblioteca Tech House Março/Abril 2026" target="_blank" class="block w-full border border-[#00ff88]/50 text-[#00ff88] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#00ff88]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#w"/></svg>WHATSAPP • PIX</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- House Music Jan -->
+      <div class="card-hover bg-[#12121a] rounded-2xl overflow-hidden border border-[#00f0ff]/10 reveal" data-category="house">
+        <div class="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#ff6b00]/20 to-[#ff00ff]/20 flex items-center justify-center">
+          <div class="text-center p-6">
+            <svg class="w-16 h-16 text-[#ff6b00] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+            <h3 class="font-orbitron text-xl font-bold text-white">House Music</h3>
+            <p class="text-[#ff6b00] text-sm mt-2">Janeiro 2026</p>
+          </div>
+          <div class="absolute top-4 left-4"><span class="bg-[#00f0ff] text-[#050508] text-xs font-bold px-3 py-1 rounded-full">NOVO</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4"><div class="flex items-end gap-2"><span class="font-orbitron text-3xl font-bold text-[#00f0ff]">R$49</span><span class="text-[#6b7280] line-through text-sm mb-1">R$79</span></div></div>
+        </div>
+        <div class="p-4 lg:p-5">
+          <h3 class="font-orbitron text-lg lg:text-xl font-bold text-white mb-1">House Music</h3>
+          <p class="text-[#00f0ff] text-sm mb-4">Jan 2026</p>
+          <div class="flex items-center justify-between mb-4 text-sm text-[#6b7280]">
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#00f0ff]"><use href="#m"/></svg>50 albums</span>
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#ff00ff]"><use href="#f"/></svg>320kbps</span>
+          </div>
+          <div class="space-y-2">
+            <a href="https://ihaamfqhzl3wa.kimi.page/" target="_blank" class="block w-full bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-[#050508] font-orbitron font-semibold py-2.5 rounded-lg text-center hover:scale-105 transition-transform flex items-center justify-center gap-1.5 text-sm"><svg class="w-4 h-4"><use href="#p"/></svg>PRÉVIAS</a>
+            <a href="https://www.mercadolivre.com.br/pack-de-musica-house-music-traxsouce-2026----bonus/up/MLBU3791172313?pdp_filters=item_id:MLB6256515956" target="_blank" class="block w-full border border-[#ffe600]/60 text-[#ffe600] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#ffe600]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#c"/></svg>MERCADO LIVRE • 12X</a>
+            <a href="https://wa.me/5541996399666?text=Quero comprar o pack House Music Janeiro 2026" target="_blank" class="block w-full border border-[#00ff88]/50 text-[#00ff88] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#00ff88]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#w"/></svg>WHATSAPP • PIX</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deep House Fev -->
+      <div class="card-hover bg-[#12121a] rounded-2xl overflow-hidden border border-[#00f0ff]/10 reveal" data-category="house">
+        <div class="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#00f0ff]/10 to-[#00ff88]/20 flex items-center justify-center">
+          <div class="text-center p-6">
+            <svg class="w-16 h-16 text-[#00f0ff] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+            <h3 class="font-orbitron text-xl font-bold text-white">Deep House</h3>
+            <p class="text-[#00f0ff] text-sm mt-2">Fevereiro 2026</p>
+          </div>
+          <div class="absolute top-4 left-4"><span class="bg-[#00ff88] text-[#050508] text-xs font-bold px-3 py-1 rounded-full">LANÇAMENTO</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4"><div class="flex items-end gap-2"><span class="font-orbitron text-3xl font-bold text-[#00f0ff]">R$49</span><span class="text-[#6b7280] line-through text-sm mb-1">R$79</span></div></div>
+        </div>
+        <div class="p-4 lg:p-5">
+          <h3 class="font-orbitron text-lg lg:text-xl font-bold text-white mb-1">Deep House</h3>
+          <p class="text-[#00f0ff] text-sm mb-4">Fev 2026</p>
+          <div class="flex items-center justify-between mb-4 text-sm text-[#6b7280]">
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#00f0ff]"><use href="#m"/></svg>50 albums</span>
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#ff00ff]"><use href="#f"/></svg>320kbps</span>
+          </div>
+          <div class="space-y-2">
+            <a href="https://u2j33rbtgbxt6.kimi.page/" target="_blank" class="block w-full bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-[#050508] font-orbitron font-semibold py-2.5 rounded-lg text-center hover:scale-105 transition-transform flex items-center justify-center gap-1.5 text-sm"><svg class="w-4 h-4"><use href="#p"/></svg>PRÉVIAS</a>
+            <a href="https://www.mercadolivre.com.br/pack-de-musica--deep-house-exclusivo--fevereiro-2026/up/MLBU3949552448?pdp_filters=item_id:MLB6719995916" target="_blank" class="block w-full border border-[#ffe600]/60 text-[#ffe600] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#ffe600]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#c"/></svg>MERCADO LIVRE • 12X</a>
+            <a href="https://wa.me/5541996399666?text=Quero comprar o pack Deep House Fevereiro 2026" target="_blank" class="block w-full border border-[#00ff88]/50 text-[#00ff88] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#00ff88]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#w"/></svg>WHATSAPP • PIX</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Techno Peak Time -->
+      <div class="card-hover bg-[#12121a] rounded-2xl overflow-hidden border border-[#00f0ff]/10 reveal" data-category="techno">
+        <div class="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#b026ff]/20 to-[#ff00ff]/20 flex items-center justify-center">
+          <div class="text-center p-6">
+            <svg class="w-16 h-16 text-[#b026ff] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <h3 class="font-orbitron text-xl font-bold text-white">Techno Peak</h3>
+            <p class="text-[#b026ff] text-sm mt-2">Janeiro 2026</p>
+          </div>
+          <div class="absolute top-4 left-4"><span class="bg-[#b026ff] text-white text-xs font-bold px-3 py-1 rounded-full">TOP</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4"><div class="flex items-end gap-2"><span class="font-orbitron text-3xl font-bold text-[#00f0ff]">R$49</span><span class="text-[#6b7280] line-through text-sm mb-1">R$79</span></div></div>
+        </div>
+        <div class="p-4 lg:p-5">
+          <h3 class="font-orbitron text-lg lg:text-xl font-bold text-white mb-1">Techno Peak Time</h3>
+          <p class="text-[#00f0ff] text-sm mb-4">Jan 2026</p>
+          <div class="flex items-center justify-between mb-4 text-sm text-[#6b7280]">
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#00f0ff]"><use href="#m"/></svg>30 albums</span>
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#ff00ff]"><use href="#f"/></svg>320kbps</span>
+          </div>
+          <div class="space-y-2">
+            <a href="https://xo77x2p3de3hy.kimi.page/" target="_blank" class="block w-full bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-[#050508] font-orbitron font-semibold py-2.5 rounded-lg text-center hover:scale-105 transition-transform flex items-center justify-center gap-1.5 text-sm"><svg class="w-4 h-4"><use href="#p"/></svg>PRÉVIAS</a>
+            <a href="https://www.mercadolivre.com.br/pack-musica-eletronica-techno-peak-time-janeiro-2026--bonus/up/MLBU3800772992?pdp_filters=item_id:MLB6256488882" target="_blank" class="block w-full border border-[#ffe600]/60 text-[#ffe600] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#ffe600]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#c"/></svg>MERCADO LIVRE • 12X</a>
+            <a href="https://wa.me/5541996399666?text=Quero comprar o pack Techno Peak Time" target="_blank" class="block w-full border border-[#00ff88]/50 text-[#00ff88] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#00ff88]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#w"/></svg>WHATSAPP • PIX</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flashback 80/90 -->
+      <div class="card-hover bg-[#12121a] rounded-2xl overflow-hidden border border-[#00f0ff]/10 reveal" data-category="flashback">
+        <div class="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#ff6b00]/20 to-[#ffcc00]/20 flex items-center justify-center">
+          <div class="text-center p-6">
+            <svg class="w-16 h-16 text-[#ff6b00] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <h3 class="font-orbitron text-xl font-bold text-white">Flashback 80/90</h3>
+            <p class="text-[#ff6b00] text-sm mt-2">Dance & Pop</p>
+          </div>
+          <div class="absolute top-4 left-4"><span class="bg-[#ff6b00] text-white text-xs font-bold px-3 py-1 rounded-full">NOSTÁLGICO</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4"><div class="flex items-end gap-2"><span class="font-orbitron text-3xl font-bold text-[#00f0ff]">R$49</span><span class="text-[#6b7280] line-through text-sm mb-1">R$79</span></div></div>
+        </div>
+        <div class="p-4 lg:p-5">
+          <h3 class="font-orbitron text-lg lg:text-xl font-bold text-white mb-1">Flashback 80/90</h3>
+          <p class="text-[#00f0ff] text-sm mb-4">Dance & Pop</p>
+          <div class="flex items-center justify-between mb-4 text-sm text-[#6b7280]">
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#00f0ff]"><use href="#m"/></svg>25 albums</span>
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#ff00ff]"><use href="#f"/></svg>320kbps</span>
+          </div>
+          <div class="space-y-2">
+            <a href="https://5vdbbqmbmjf3m.kimi.page/" target="_blank" class="block w-full bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-[#050508] font-orbitron font-semibold py-2.5 rounded-lg text-center hover:scale-105 transition-transform flex items-center justify-center gap-1.5 text-sm"><svg class="w-4 h-4"><use href="#p"/></svg>PRÉVIAS</a>
+            <a href="https://www.mercadolivre.com.br/pack-de-musicas-beatport-flashbacks-dance-pop-809035-gigas/up/MLBU3791029039?pdp_filters=item_id:MLB6256449176" target="_blank" class="block w-full border border-[#ffe600]/60 text-[#ffe600] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#ffe600]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#c"/></svg>MERCADO LIVRE • 12X</a>
+            <a href="https://wa.me/5541996399666?text=Quero comprar o pack Flashback 80/90" target="_blank" class="block w-full border border-[#00ff88]/50 text-[#00ff88] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#00ff88]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#w"/></svg>WHATSAPP • PIX</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pack Flashback 2026 -->
+      <div class="card-hover bg-[#12121a] rounded-2xl overflow-hidden border border-[#00f0ff]/10 reveal" data-category="flashback">
+        <div class="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#00f0ff]/10 to-[#ff6b00]/20 flex items-center justify-center">
+          <div class="text-center p-6">
+            <svg class="w-16 h-16 text-[#00f0ff] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <h3 class="font-orbitron text-xl font-bold text-white">Pack Flashback</h3>
+            <p class="text-[#00f0ff] text-sm mt-2">70/80/90</p>
+          </div>
+          <div class="absolute top-4 left-4"><span class="bg-[#00f0ff] text-[#050508] text-xs font-bold px-3 py-1 rounded-full">EXCLUSIVO</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4"><div class="flex items-end gap-2"><span class="font-orbitron text-3xl font-bold text-[#00f0ff]">R$49</span><span class="text-[#6b7280] line-through text-sm mb-1">R$79</span></div></div>
+        </div>
+        <div class="p-4 lg:p-5">
+          <h3 class="font-orbitron text-lg lg:text-xl font-bold text-white mb-1">Pack Flashback 2026</h3>
+          <p class="text-[#00f0ff] text-sm mb-4">70/80/90</p>
+          <div class="flex items-center justify-between mb-4 text-sm text-[#6b7280]">
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#00f0ff]"><use href="#m"/></svg>25 albums</span>
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#ff00ff]"><use href="#f"/></svg>320kbps</span>
+          </div>
+          <div class="space-y-2">
+            <a href="https://k6e4w6kngyyue.kimi.page/" target="_blank" class="block w-full bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-[#050508] font-orbitron font-semibold py-2.5 rounded-lg text-center hover:scale-105 transition-transform flex items-center justify-center gap-1.5 text-sm"><svg class="w-4 h-4"><use href="#p"/></svg>PRÉVIAS</a>
+            <a href="https://www.mercadolivre.com.br/pack-de-musica-flashback-albuns-exclusivos-708090-2026/up/MLBU3937735221?pdp_filters=item_id:MLB6719919954" target="_blank" class="block w-full border border-[#ffe600]/60 text-[#ffe600] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#ffe600]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#c"/></svg>MERCADO LIVRE • 12X</a>
+            <a href="https://wa.me/5541996399666?text=Quero comprar o Pack Flashback 2026" target="_blank" class="block w-full border border-[#00ff88]/50 text-[#00ff88] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#00ff88]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#w"/></svg>WHATSAPP • PIX</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Funky House -->
+      <div class="card-hover bg-[#12121a] rounded-2xl overflow-hidden border border-[#00f0ff]/10 reveal" data-category="house">
+        <div class="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#ff00ff]/20 to-[#b026ff]/20 flex items-center justify-center">
+          <div class="text-center p-6">
+            <svg class="w-16 h-16 text-[#ff00ff] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+            <h3 class="font-orbitron text-xl font-bold text-white">Funky House</h3>
+            <p class="text-[#ff00ff] text-sm mt-2">2025</p>
+          </div>
+          <div class="absolute top-4 left-4"><span class="bg-[#00ff88] text-[#050508] text-xs font-bold px-3 py-1 rounded-full">HIT</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4"><div class="flex items-end gap-2"><span class="font-orbitron text-3xl font-bold text-[#00f0ff]">R$49</span><span class="text-[#6b7280] line-through text-sm mb-1">R$79</span></div></div>
+        </div>
+        <div class="p-4 lg:p-5">
+          <h3 class="font-orbitron text-lg lg:text-xl font-bold text-white mb-1">Funky House</h3>
+          <p class="text-[#00f0ff] text-sm mb-4">2025</p>
+          <div class="flex items-center justify-between mb-4 text-sm text-[#6b7280]">
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#00f0ff]"><use href="#m"/></svg>30 albums</span>
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#ff00ff]"><use href="#f"/></svg>320kbps</span>
+          </div>
+          <div class="space-y-2">
+            <a href="https://6z67b2o7dnyau.kimi.page/" target="_blank" class="block w-full bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-[#050508] font-orbitron font-semibold py-2.5 rounded-lg text-center hover:scale-105 transition-transform flex items-center justify-center gap-1.5 text-sm"><svg class="w-4 h-4"><use href="#p"/></svg>PRÉVIAS</a>
+            <a href="https://www.mercadolivre.com.br/pack-de-musica--funky-house--jackin-house--2025/up/MLBU3937739829?pdp_filters=item_id:MLB6720095522" target="_blank" class="block w-full border border-[#ffe600]/60 text-[#ffe600] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#ffe600]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#c"/></svg>MERCADO LIVRE • 12X</a>
+            <a href="https://wa.me/5541996399666?text=Quero comprar o pack Funky House" target="_blank" class="block w-full border border-[#00ff88]/50 text-[#00ff88] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#00ff88]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#w"/></svg>WHATSAPP • PIX</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- MEGA PACK -->
+      <div class="card-hover bg-[#12121a] rounded-2xl overflow-hidden border border-[#00f0ff]/10 reveal" data-category="combo">
+        <div class="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-red-500/20 to-[#ff6b00]/20 flex items-center justify-center">
+          <div class="text-center p-6">
+            <svg class="w-16 h-16 text-red-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <h3 class="font-orbitron text-2xl font-bold text-white">MEGA PACK</h3>
+            <p class="text-red-400 text-sm mt-2">5 Packs • -60% OFF</p>
+          </div>
+          <div class="absolute top-4 left-4"><span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">-60%</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4"><div class="flex items-end gap-2"><span class="font-orbitron text-3xl font-bold text-[#00f0ff]">R$99</span><span class="text-[#6b7280] line-through text-sm mb-1">R$245</span></div></div>
+        </div>
+        <div class="p-4 lg:p-5">
+          <h3 class="font-orbitron text-lg lg:text-xl font-bold text-white mb-1">MEGA PACK</h3>
+          <p class="text-[#00f0ff] text-sm mb-4">5 Packs</p>
+          <div class="flex items-center justify-between mb-4 text-sm text-[#6b7280]">
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#00f0ff]"><use href="#m"/></svg>150+ albums</span>
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#ff00ff]"><use href="#f"/></svg>320kbps</span>
+          </div>
+          <div class="space-y-2">
+            <a href="https://lg72nekr7zxle.kimi.page/" target="_blank" class="block w-full bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-[#050508] font-orbitron font-semibold py-2.5 rounded-lg text-center hover:scale-105 transition-transform flex items-center justify-center gap-1.5 text-sm"><svg class="w-4 h-4"><use href="#p"/></svg>PRÉVIAS</a>
+            <a href="https://www.mercadolivre.com.br/pack-de-musicas-beatport-flashbacks-dance-pop-809035-gigas/up/MLBU3791029039?pdp_filters=item_id:MLB6256449176" target="_blank" class="block w-full border border-[#ffe600]/60 text-[#ffe600] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#ffe600]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#c"/></svg>MERCADO LIVRE • 12X</a>
+            <a href="https://wa.me/5541996399666?text=Quero comprar o MEGA PACK" target="_blank" class="block w-full border border-[#00ff88]/50 text-[#00ff88] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#00ff88]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#w"/></svg>WHATSAPP • PIX</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- House Retro Festival -->
+      <div class="card-hover bg-[#12121a] rounded-2xl overflow-hidden border border-[#00f0ff]/10 reveal" data-category="house">
+        <div class="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#ff6b00]/20 to-[#00f0ff]/10 flex items-center justify-center">
+          <div class="text-center p-6">
+            <svg class="w-16 h-16 text-[#ff6b00] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+            <h3 class="font-orbitron text-xl font-bold text-white">House Retro</h3>
+            <p class="text-[#ff6b00] text-sm mt-2">Festival 2026</p>
+          </div>
+          <div class="absolute top-4 left-4"><span class="bg-[#ff6b00] text-white text-xs font-bold px-3 py-1 rounded-full">RETRO 2026</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4"><div class="flex items-end gap-2"><span class="font-orbitron text-3xl font-bold text-[#00f0ff]">R$49</span><span class="text-[#6b7280] line-through text-sm mb-1">R$79</span></div></div>
+        </div>
+        <div class="p-4 lg:p-5">
+          <h3 class="font-orbitron text-lg lg:text-xl font-bold text-white mb-1">House Retro Festival</h3>
+          <p class="text-[#00f0ff] text-sm mb-4">Fev/Mar/Abr 2026</p>
+          <div class="flex items-center justify-between mb-4 text-sm text-[#6b7280]">
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#00f0ff]"><use href="#m"/></svg>+1700 tracks</span>
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#ff00ff]"><use href="#f"/></svg>320kbps</span>
+          </div>
+          <div class="space-y-2">
+            <a href="https://z2owpyhuhy6io.kimi.page/" target="_blank" class="block w-full bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-[#050508] font-orbitron font-semibold py-2.5 rounded-lg text-center hover:scale-105 transition-transform flex items-center justify-center gap-1.5 text-sm"><svg class="w-4 h-4"><use href="#p"/></svg>PRÉVIAS</a>
+            <a href="https://www.mercadolivre.com.br/pack-de-musica-house-music-retro-2026--fev--marco--abril/up/MLBU3937745961?pdp_filters=item_id:MLB6719920780" target="_blank" class="block w-full border border-[#ffe600]/60 text-[#ffe600] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#ffe600]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#c"/></svg>MERCADO LIVRE • 12X</a>
+            <a href="https://wa.me/5541996399666?text=Quero comprar o pack House Music Retro 2026" target="_blank" class="block w-full border border-[#00ff88]/50 text-[#00ff88] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#00ff88]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#w"/></svg>WHATSAPP • PIX</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tomorrowland Pack -->
+      <div class="card-hover bg-[#12121a] rounded-2xl overflow-hidden border border-[#00f0ff]/10 reveal" data-category="combo">
+        <div class="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#b026ff]/20 to-[#00f0ff]/20 flex items-center justify-center">
+          <div class="text-center p-6">
+            <svg class="w-16 h-16 text-[#b026ff] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <h3 class="font-orbitron text-xl font-bold text-white">Tomorrowland</h3>
+            <p class="text-[#b026ff] text-sm mt-2">EDM/Big Room</p>
+          </div>
+          <div class="absolute top-4 left-4"><span class="bg-[#b026ff] text-white text-xs font-bold px-3 py-1 rounded-full">TOMORROWLAND</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4"><div class="flex items-end gap-2"><span class="font-orbitron text-3xl font-bold text-[#00f0ff]">R$49</span><span class="text-[#6b7280] line-through text-sm mb-1">R$79</span></div></div>
+        </div>
+        <div class="p-4 lg:p-5">
+          <h3 class="font-orbitron text-lg lg:text-xl font-bold text-white mb-1">Tomorrowland Pack</h3>
+          <p class="text-[#00f0ff] text-sm mb-4">EDM/Big Room/Electro</p>
+          <div class="flex items-center justify-between mb-4 text-sm text-[#6b7280]">
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#00f0ff]"><use href="#m"/></svg>+1000 tracks</span>
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#ff00ff]"><use href="#f"/></svg>320kbps</span>
+          </div>
+          <div class="space-y-2">
+            <a href="https://5atutw7rh4zx4.ok.kimi.link/" target="_blank" class="block w-full bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-[#050508] font-orbitron font-semibold py-2.5 rounded-lg text-center hover:scale-105 transition-transform flex items-center justify-center gap-1.5 text-sm"><svg class="w-4 h-4"><use href="#p"/></svg>PRÉVIAS</a>
+            <a href="https://www.mercadolivre.com.br/pack-de-musica-especial-tomorrowland--edm-big-2026/up/MLBU3949569510?pdp_filters=item_id:MLB6720096342" target="_blank" class="block w-full border border-[#ffe600]/60 text-[#ffe600] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#ffe600]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#c"/></svg>MERCADO LIVRE • 12X</a>
+            <a href="https://wa.me/5541996399666?text=Quero comprar o pack Tomorrowland EDM Big 2026" target="_blank" class="block w-full border border-[#00ff88]/50 text-[#00ff88] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#00ff88]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#w"/></svg>WHATSAPP • PIX</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- House Series -->
+      <div class="card-hover bg-[#12121a] rounded-2xl overflow-hidden border border-[#00f0ff]/10 reveal" data-category="combo">
+        <div class="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-red-500/20 to-[#b026ff]/20 flex items-center justify-center">
+          <div class="text-center p-6">
+            <svg class="w-16 h-16 text-red-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+            <h3 class="font-orbitron text-xl font-bold text-white">House Series</h3>
+            <p class="text-red-400 text-sm mt-2">10 Packs • Coleção</p>
+          </div>
+          <div class="absolute top-4 left-4"><span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">COLEÇÃO</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4"><div class="flex items-end gap-2"><span class="font-orbitron text-3xl font-bold text-[#00f0ff]">R$119</span><span class="text-[#6b7280] line-through text-sm mb-1">R$199</span></div></div>
+        </div>
+        <div class="p-4 lg:p-5">
+          <h3 class="font-orbitron text-lg lg:text-xl font-bold text-white mb-1">House Series</h3>
+          <p class="text-[#00f0ff] text-sm mb-4">10 packs house music</p>
+          <div class="flex items-center justify-between mb-4 text-sm text-[#6b7280]">
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#00f0ff]"><use href="#m"/></svg>+1200 tracks</span>
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#ff00ff]"><use href="#f"/></svg>320kbps</span>
+          </div>
+          <div class="space-y-2">
+            <a href="https://relpf4a7qtt24.ok.kimi.link/" target="_blank" class="block w-full bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-[#050508] font-orbitron font-semibold py-2.5 rounded-lg text-center hover:scale-105 transition-transform flex items-center justify-center gap-1.5 text-sm"><svg class="w-4 h-4"><use href="#p"/></svg>PRÉVIAS</a>
+            <a href="https://www.mercadolivre.com.br/pack-collection-house-series-10-packs-exclusivos/up/MLBU3848658779?pdp_filters=item_id:MLB4543779123" target="_blank" class="block w-full border border-[#ffe600]/60 text-[#ffe600] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#ffe600]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#c"/></svg>MERCADO LIVRE • 12X</a>
+            <a href="https://wa.me/5541996399666?text=Quero comprar a Collection House Series 10 Packs" target="_blank" class="block w-full border border-[#00ff88]/50 text-[#00ff88] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#00ff88]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#w"/></svg>WHATSAPP • PIX</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Monster Pack -->
+      <div class="card-hover bg-[#12121a] rounded-2xl overflow-hidden border border-[#00f0ff]/10 reveal" data-category="combo">
+        <div class="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#b026ff]/30 to-[#ff00ff]/30 flex items-center justify-center">
+          <div class="text-center p-6">
+            <svg class="w-16 h-16 text-[#b026ff] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <h3 class="font-orbitron text-2xl font-bold text-white">Monster Pack</h3>
+            <p class="text-[#b026ff] text-sm mt-2">20 Packs • Monster</p>
+          </div>
+          <div class="absolute top-4 left-4"><span class="bg-[#b026ff] text-white text-xs font-bold px-3 py-1 rounded-full">MONSTER</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4"><div class="flex items-end gap-2"><span class="font-orbitron text-3xl font-bold text-[#00f0ff]">R$149</span><span class="text-[#6b7280] line-through text-sm mb-1">R$249</span></div></div>
+        </div>
+        <div class="p-4 lg:p-5">
+          <h3 class="font-orbitron text-lg lg:text-xl font-bold text-white mb-1">Monster Pack</h3>
+          <p class="text-[#00f0ff] text-sm mb-4">20 packs exclusivos</p>
+          <div class="flex items-center justify-between mb-4 text-sm text-[#6b7280]">
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#00f0ff]"><use href="#m"/></svg>300+ albums</span>
+            <span class="flex items-center gap-1"><svg class="w-4 h-4 text-[#ff00ff]"><use href="#f"/></svg>320kbps</span>
+          </div>
+          <div class="space-y-2">
+            <a href="https://cwbunderstudio81.hotmart.host/pagina-de-vendas-monster-pack" target="_blank" class="block w-full bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-[#050508] font-orbitron font-semibold py-2.5 rounded-lg text-center hover:scale-105 transition-transform flex items-center justify-center gap-1.5 text-sm"><svg class="w-4 h-4"><use href="#p"/></svg>PRÉVIAS</a>
+            <a href="https://cwbunderstudio.hotmart.host/packcollectionhousemusic?pixel+site=49%2C00" target="_blank" class="block w-full border border-[#ff6b00]/60 text-[#ff6b00] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#ff6b00]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>HOTMART • R$149</a>
+            <a href="https://wa.me/5541996399666?text=Quero comprar o Monster Pack 20 packs" target="_blank" class="block w-full border border-[#00ff88]/50 text-[#00ff88] font-orbitron font-medium py-2 rounded-lg text-center hover:bg-[#00ff88]/10 transition-all flex items-center justify-center gap-1.5 text-xs"><svg class="w-3.5 h-3.5"><use href="#w"/></svg>WHATSAPP • PIX</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section id="packs" class="py-20 lg:py-32" style="background:linear-gradient(180deg,#0a0a0f 0%,#12121a 50%,#0a0a0f 100%)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 bg-[#ff00ff]/10 border border-[#ff00ff]/30 rounded-full px-4 py-2 mb-6">
+        <span class="w-2 h-2 bg-[#ff00ff] rounded-full animate-pulse"></span>
+        <span class="text-sm text-[#ff00ff] font-orbitron tracking-wider">NOVO SERVIÇO</span>
+      </div>
+      <h2 class="font-orbitron text-4xl lg:text-5xl font-bold text-white mb-4">Presskits <span class="text-[#ff00ff]">Digitais</span> Profissionais</h2>
+      <p class="text-[#6b7280] text-lg max-w-3xl mx-auto">Sua imagem profissional começa aqui. Criamos presskits digitais de alto padrão para <span class="text-[#00f0ff]">DJs, produtores e artistas</span> que querem se destacar na cena eletrônica.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6 mb-16">
+      <div class="bg-[#12121a]/80 border border-[#00f0ff]/10 rounded-2xl p-8 text-center">
+        <div class="w-16 h-16 bg-gradient-to-br from-[#00f0ff] to-[#b026ff] rounded-2xl flex items-center justify-center mx-auto mb-4" style="box-shadow:0 0 20px rgba(0,240,255,0.2)">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="font-orbitron text-xl font-bold text-white mb-2">Design Futurista</h3>
+        <p class="text-[#6b7280]">Visual cyberpunk e neon que traduz a essência da música eletrônica moderna.</p>
+      </div>
+      <div class="bg-[#12121a]/80 border border-[#00f0ff]/10 rounded-2xl p-8 text-center">
+        <div class="w-16 h-16 bg-gradient-to-br from-[#ff00ff] to-[#b026ff] rounded-2xl flex items-center justify-center mx-auto mb-4" style="box-shadow:0 0 20px rgba(255,0,255,0.2)">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h3 class="font-orbitron text-xl font-bold text-white mb-2">Entrega Rápida</h3>
+        <p class="text-[#6b7280]">Seu presskit pronto em até 7 dias, com revisões incluídas.</p>
+      </div>
+      <div class="bg-[#12121a]/80 border border-[#00f0ff]/10 rounded-2xl p-8 text-center">
+        <div class="w-16 h-16 bg-gradient-to-br from-[#00ff88] to-[#00cc66] rounded-2xl flex items-center justify-center mx-auto mb-4" style="box-shadow:0 0 20px rgba(0,255,136,0.2)">
+          <svg class="w-8 h-8 text-[#050508]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="font-orbitron text-xl font-bold text-white mb-2">100% Responsivo</h3>
+        <p class="text-[#6b7280]">Acesse de qualquer dispositivo. Compartilhe via link com promoters e selos.</p>
+      </div>
+    </div>
+    <h3 class="font-orbitron text-2xl font-bold text-white text-center mb-10">Confira alguns <span class="text-[#00f0ff]">presskits</span> recentes</h3>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="card-hover bg-[#12121a] rounded-2xl overflow-hidden border border-[#00f0ff]/10">
+        <div class="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#00f0ff]/20 to-[#b026ff]/20 flex items-center justify-center">
+          <div class="text-center p-6">
+            <svg class="w-20 h-20 text-[#00f0ff] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <h3 class="font-orbitron text-2xl font-bold text-white">Tuur Adams</h3>
+            <p class="text-[#00f0ff] text-sm mt-2">Tech Deep Minimal</p>
+          </div>
+          <div class="absolute top-4 left-4"><span class="bg-[#00f0ff] text-[#050508] text-xs font-bold px-3 py-1 rounded-full">PROFISSIONAL</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4">
+            <h3 class="font-orbitron text-lg font-bold text-white">Tuur Adams</h3>
+            <p class="text-[#00f0ff] text-sm">Presskit Digital • Tech Deep Minimal</p>
+            <div class="flex gap-2 mt-2"><span class="text-xs bg-[#00f0ff]/20 text-[#00f0ff] px-2 py-1 rounded"></span><span class="text-xs bg-[#ff00ff]/20 text-[#ff00ff] px-2 py-1 rounded"></span><span class="text-xs bg-[#00ff88]/20 text-[#00ff88] px-2 py-1 rounded">DJ Internacional</span></div>
+          </div>
+        </div>
+        <div class="p-6"><a href="https://presskittuuradams.netlify.app/" target="_blank" class="block w-full bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-[#050508] font-orbitron font-bold py-3 rounded-xl text-center hover:scale-105 transition-transform">VER PRESSKIT</a></div>
+      </div>
+      <div class="card-hover bg-[#12121a] rounded-2xl overflow-hidden border border-[#00f0ff]/10">
+        <div class="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#ff00ff]/20 to-[#b026ff]/20 flex items-center justify-center">
+          <div class="text-center p-6">
+            <svg class="w-20 h-20 text-[#ff00ff] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <h3 class="font-orbitron text-2xl font-bold text-white">KB7 PsyTechno</h3>
+            <p class="text-[#ff00ff] text-sm mt-2">Underground Psytrance</p>
+          </div>
+          <div class="absolute top-4 left-4"><span class="bg-[#ff00ff] text-white text-xs font-bold px-3 py-1 rounded-full">PSYCHEDELIC</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4">
+            <h3 class="font-orbitron text-lg font-bold text-white">KB7 PsyTechno</h3>
+            <p class="text-[#ff00ff] text-sm">Presskit Digital • Underground Psytrance</p>
+            <div class="flex gap-2 mt-2"><span class="text-xs bg-[#00f0ff]/20 text-[#00f0ff] px-2 py-1 rounded"></span><span class="text-xs bg-[#ff00ff]/20 text-[#ff00ff] px-2 py-1 rounded"></span><span class="text-xs bg-[#00ff88]/20 text-[#00ff88] px-2 py-1 rounded">Visual Psicodélico</span></div>
+          </div>
+        </div>
+        <div class="p-6"><a href="https://5h7thn7uixbpa.kimi.page/" target="_blank" class="block w-full bg-gradient-to-r from-[#ff00ff] to-[#b026ff] text-white font-orbitron font-bold py-3 rounded-xl text-center hover:scale-105 transition-transform">VER PRESSKIT</a></div>
+      </div>
+      <div class="card-hover bg-[#12121a] rounded-2xl overflow-hidden border border-[#00f0ff]/10">
+        <div class="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#00ff88]/20 to-[#00cc66]/20 flex items-center justify-center">
+          <div class="text-center p-6">
+            <svg class="w-20 h-20 text-[#00ff88] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <h3 class="font-orbitron text-2xl font-bold text-white">KB7 2026</h3>
+            <p class="text-[#00ff88] text-sm mt-2">Techno | Psytrance DJ</p>
+          </div>
+          <div class="absolute top-4 left-4"><span class="bg-[#00ff88] text-[#050508] text-xs font-bold px-3 py-1 rounded-full">FUTURISTA</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4">
+            <h3 class="font-orbitron text-lg font-bold text-white">KB7 2026</h3>
+            <p class="text-[#00ff88] text-sm">Presskit Digital • Techno | Psytrance DJ</p>
+            <div class="flex gap-2 mt-2"><span class="text-xs bg-[#00f0ff]/20 text-[#00f0ff] px-2 py-1 rounded"></span><span class="text-xs bg-[#ff00ff]/20 text-[#ff00ff] px-2 py-1 rounded"></span><span class="text-xs bg-[#00ff88]/20 text-[#00ff88] px-2 py-1 rounded">Design Cyberpunk</span></div>
+          </div>
+        </div>
+        <div class="p-6"><a href="https://iitxj23jtdbhe.kimi.page/" target="_blank" class="block w-full bg-gradient-to-r from-[#00ff88] to-[#00cc66] text-[#050508] font-orbitron font-bold py-3 rounded-xl text-center hover:scale-105 transition-transform">VER PRESSKIT</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="promo" class="py-16 lg:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <p class="text-[#ff00ff] font-orbitron text-xs sm:text-sm tracking-widest mb-2">PROMOÇÃO ESPECIAL</p>
+      <h2 class="font-orbitron text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3">Catálogo <span class="text-[#00f0ff]">2025</span></h2>
+      <p class="text-[#6b7280] text-sm sm:text-base max-w-xl mx-auto px-2">Bibliotecas musicais do catálogo 2025 com as melhores tracks do ano. Oferta exclusiva por tempo limitado!</p>
+    </div>
+    <div class="bg-gradient-to-r from-[#00f0ff]/20 to-[#ff00ff]/20 border border-[#00f0ff]/30 rounded-3xl p-2">
+      <div class="bg-[#12121a] rounded-2xl overflow-hidden">
+        <div class="bg-gradient-to-r from-[#ff00ff]/20 to-[#ff6b00]/20 px-4 py-3 text-center">
+          <p class="text-[#ff00ff] font-orbitron text-xs sm:text-sm tracking-wider">🔥 SUPER PROMOÇÃO — POR TEMPO LIMITADO</p>
+        </div>
+        <div class="flex flex-col md:flex-row">
+          <div class="relative w-full md:w-1/2 overflow-hidden bg-gradient-to-br from-[#00f0ff]/10 to-[#ff00ff]/10 flex items-center justify-center" style="min-height:280px;">
+            <div class="text-center p-8">
+              <svg class="w-24 h-24 text-[#00f0ff] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+              <h3 class="font-orbitron text-3xl font-bold text-white">Catálogo 2025</h3>
+              <p class="text-[#00f0ff] text-lg mt-2">Bibliotecas Musicais</p>
+            </div>
+            <div class="absolute top-3 left-3"><span class="bg-[#ff6b00] text-white text-xs font-bold px-3 py-1.5 rounded-full">-50% OFF</span></div>
+          </div>
+          <div class="w-full md:w-1/2 p-5 sm:p-6 lg:p-8 flex flex-col justify-center">
+            <p class="text-[#ff00ff] font-orbitron text-xs tracking-wider mb-1.5">CATÁLOGO 2025</p>
+            <h3 class="font-orbitron text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2">Bibliotecas Musicais</h3>
+            <p class="text-[#6b7280] text-sm mb-4 leading-relaxed">As melhores tracks do ano reunidas em um único pack. Qualidade premium 320kbps para DJs profissionais.</p>
+            <div class="flex flex-wrap items-center gap-4 mb-4">
+              <span class="flex items-center gap-1.5 text-xs text-[#6b7280]"><svg class="w-4 h-4 text-[#00f0ff]"><use href="#m"/></svg>Top 100</span>
+              <span class="flex items-center gap-1.5 text-xs text-[#6b7280]"><svg class="w-4 h-4 text-[#ff00ff]"><use href="#f"/></svg>320kbps</span>
+            </div>
+            <div class="flex items-end gap-2 mb-5">
+              <span class="font-orbitron text-4xl sm:text-5xl font-bold text-[#00f0ff]">R$39</span>
+              <span class="text-[#6b7280] line-through text-base sm:text-lg mb-1">R$79</span>
+              <span class="bg-[#ff6b00]/20 text-[#ff6b00] text-xs font-bold px-2 py-1 rounded-full mb-1">-50%</span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <a href="https://cwb-underground-studio.my.canva.site/cat-logo-de-packs-atualizado-de-2025-packs-lancamentos" target="_blank" class="block w-full bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-[#050508] font-orbitron font-semibold py-2.5 rounded-xl text-center hover:scale-105 transition-transform flex items-center justify-center gap-2 text-sm"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>VER CATÁLOGO 2025</a>
+              <a href="https://wa.me/5541996399666?text=Quero comprar o Catálogo de Bibliotecas Musicais 2025 por R$39,00" target="_blank" class="block w-full border border-[#00f0ff]/40 text-[#00f0ff] font-orbitron font-medium py-2.5 rounded-xl text-center hover:bg-[#00f0ff]/10 transition-all flex items-center justify-center gap-2 text-sm"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>COMPRAR R$39</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 lg:py-32" style="background:linear-gradient(180deg,#0a0a0f 0%,#12121a 50%,#0a0a0f 100%)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <p class="text-[#00ff88] font-orbitron text-sm tracking-widest mb-3">COMUNIDADE EXCLUSIVA</p>
+      <h2 class="font-orbitron text-4xl lg:text-5xl font-bold text-white mb-4">Faça parte da <span class="text-[#00ff88]">nossa família</span></h2>
+      <p class="text-[#6b7280] text-lg max-w-2xl mx-auto">Junte-se a mais de 500 DJs e produtores que já fazem parte da maior comunidade de música eletrônica do Brasil.</p>
+    </div>
+    <div class="max-w-3xl mx-auto mb-12 bg-gradient-to-br from-[#00f0ff]/10 to-[#ff00ff]/10 rounded-2xl border border-[#00f0ff]/10 p-8 flex items-center justify-center" style="min-height:200px;">
+      <div class="text-center">
+        <svg class="w-16 h-16 text-[#00f0ff] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        <h3 class="font-orbitron text-2xl font-bold text-white">Comunidade CWB</h3>
+        <p class="text-[#00f0ff] text-sm mt-2">500+ DJs • Networking VIP</p>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-4 gap-6">
+      <div class="bg-[#12121a]/80 border border-[#00f0ff]/10 rounded-2xl p-6 text-center">
+        <div class="w-12 h-12 bg-gradient-to-br from-[#00f0ff] to-[#b026ff] rounded-xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="font-orbitron text-lg font-bold text-white mb-2">Acesso Antecipado</h3>
+        <p class="text-[#6b7280] text-sm">Seja o primeiro a receber os lançamentos e novidades antes de todo mundo.</p>
+      </div>
+      <div class="bg-[#12121a]/80 border border-[#00f0ff]/10 rounded-2xl p-6 text-center">
+        <div class="w-12 h-12 bg-gradient-to-br from-[#ff00ff] to-[#b026ff] rounded-xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        </div>
+        <h3 class="font-orbitron text-lg font-bold text-white mb-2">Networking VIP</h3>
+        <p class="text-[#6b7280] text-sm">Conecte-se com DJs e produtores de todo o Brasil. Troque experiências e oportunidades.</p>
+      </div>
+      <div class="bg-[#12121a]/80 border border-[#00f0ff]/10 rounded-2xl p-6 text-center">
+        <div class="w-12 h-12 bg-gradient-to-br from-[#00ff88] to-[#00cc66] rounded-xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-6 h-6 text-[#050508]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <h3 class="font-orbitron text-lg font-bold text-white mb-2">Dicas Exclusivas</h3>
+        <p class="text-[#6b7280] text-sm">Receba dicas de mixagem, técnicas de produção e segredos dos melhores DJs.</p>
+      </div>
+      <div class="bg-[#12121a]/80 border border-[#00f0ff]/10 rounded-2xl p-6 text-center">
+        <div class="w-12 h-12 bg-gradient-to-br from-[#ff6b00] to-[#ffcc00] rounded-xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="font-orbitron text-lg font-bold text-white mb-2">Promoções Exclusivas</h3>
+        <p class="text-[#6b7280] text-sm">Acesso a descontos especiais e promoções relâmpago disponíveis apenas para membros.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-[#00f0ff]/10 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-4 gap-8 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-gradient-to-br from-[#00f0ff] to-[#ff00ff] rounded-lg flex items-center justify-center">
+            <span class="font-orbitron font-bold text-white text-sm">CWB</span>
+          </div>
+          <div>
+            <span class="font-orbitron font-bold text-lg text-white block leading-tight">UNDERGROUND</span>
+            <span class="font-orbitron text-[10px] text-[#00f0ff] tracking-[0.3em]">STUDIO</span>
+          </div>
+        </div>
+        <p class="text-[#6b7280] text-sm">Bibliotecas musicais exclusivas e assessoria profissional para DJs e produtores.</p>
+      </div>
+      <div>
+        <h4 class="font-orbitron font-bold text-white mb-4">Gêneros</h4>
+        <ul class="space-y-2 text-sm text-[#6b7280]">
+          <li><a href="#catalogo" class="hover:text-[#00f0ff] transition-colors">Tech House</a></li>
+          <li><a href="#catalogo" class="hover:text-[#00f0ff] transition-colors">Deep House</a></li>
+          <li><a href="#catalogo" class="hover:text-[#00f0ff] transition-colors">Techno</a></li>
+          <li><a href="#catalogo" class="hover:text-[#00f0ff] transition-colors">Funk</a></li>
+          <li><a href="#catalogo" class="hover:text-[#00f0ff] transition-colors">Flashback</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-orbitron font-bold text-white mb-4">Links</h4>
+        <ul class="space-y-2 text-sm text-[#6b7280]">
+          <li><a href="#catalogo" class="hover:text-[#00f0ff] transition-colors">Catálogo</a></li>
+          <li><a href="#packs" class="hover:text-[#00f0ff] transition-colors">Packs</a></li>
+          <li><a href="#promo" class="hover:text-[#00f0ff] transition-colors">Promoção</a></li>
+          <li><a href="https://wa.me/5541996399666" target="_blank" class="hover:text-[#00f0ff] transition-colors">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-orbitron font-bold text-white mb-4">Contato</h4>
+        <ul class="space-y-2 text-sm text-[#6b7280]">
+          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#00f0ff]" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>+55 (41) 99639-9666</li>
+          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#00f0ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Atendimento 24h</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-[#00f0ff]/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-[#6b7280] text-sm">© 2026 CWB Underground Studio. Todos os direitos reservados.</p>
+      <p class="text-[#6b7280] text-xs">Qualidade premium para DJs profissionais.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://www.kimi.com/agent" target="_blank" class="fixed bottom-6 right-6 z-50 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full px-4 py-3 flex items-center gap-3 hover:bg-white/20 transition-all" style="box-shadow:0 0 20px rgba(0,240,255,0.2)">
+  <div class="w-8 h-8 bg-gradient-to-br from-[#00f0ff] to-[#ff00ff] rounded-full flex items-center justify-center"><span class="text-white font-bold text-xs">K</span></div>
+  <span class="text-white text-sm font-medium">Kimi Agent</span>
+</a>
+
+<script>
+const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');
+let W,H,particles=[];
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+window.addEventListener('resize',resize);resize();
+class Particle{constructor(){this.reset();}reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.size=Math.random()*2+0.5;this.speedX=(Math.random()-0.5)*0.5;this.speedY=(Math.random()-0.5)*0.5;this.opacity=Math.random()*0.5+0.2;}
+update(){this.x+=this.speedX;this.y+=this.speedY;if(this.x<0||this.x>W||this.y<0||this.y>H)this.reset();}
+draw(){ctx.fillStyle=`rgba(0,240,255,${this.opacity})`;ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();}}
+for(let i=0;i<80;i++)particles.push(new Particle());
+function animateParticles(){ctx.clearRect(0,0,W,H);particles.forEach(p=>{p.update();p.draw();});requestAnimationFrame(animateParticles);}
+animateParticles();
+const revealObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('active');}});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+function updateCountdown(){const now=new Date();const tomorrow=new Date(now);tomorrow.setDate(tomorrow.getDate()+1);tomorrow.setHours(0,0,0,0);const diff=tomorrow-now;const h=Math.floor(diff/3600000);const m=Math.floor((diff%3600000)/60000);const s=Math.floor((diff%60000)/1000);document.getElementById('hours').textContent=String(h).padStart(2,'0');document.getElementById('minutes').textContent=String(m).padStart(2,'0');document.getElementById('seconds').textContent=String(s).padStart(2,'0');}
+setInterval(updateCountdown,1000);updateCountdown();
+</script>
+</body>
+</html>
